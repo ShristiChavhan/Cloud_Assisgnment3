@@ -1,0 +1,50 @@
+.body{
+  background-color: #444;
+}
+.sf_cols{
+zoom: 1;
+}
+.c19-banner {
+    background-color: #FFB100;
+}
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+#body 
+.container-fluid, #body .container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.sfContentBlock {
+    content: "";
+    display: table;
+    overflow: hidden;
+}
+.covid-text {
+    color: #23276C;
+    padding: 10px;
+}
+

@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+  <title>Register</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<style>
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 350px; padding: 20px; }
+        a.linkname {font-size:130%;}
+    </style>
+</head>
+<body>
+
+   <div class="wrapper">
+        <h2>Register Page</h2>
+        <form method="POST" action="/registerbtn" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>ID</label> 
+                <input type="text" name="id1" id="id" class="form-control"  required>
+            </div>    
+            <div class="form-group">
+            <label>Username</label> 
+            <input type="text" name="username" id="uid" class="form-control" required>
+          </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="pass" id="password" class="form-control" >
+                <!-- <span class="invalid-feedback"><?php echo $password_err; ?></span> -->
+            </div>
+            
+            <div class="form-group">
+                <tr><input type="submit" class="register" id="registerbtn" value="Register"></input></tr>
+              </div>
+
+             <h3>OR</h3>
+            <div class="form-group">
+            	<tr><a href="/facebook.com" type="submit" class="linkname" class="button" id="facebookid" value="Facebook">Join with Facebook</a></tr>
+            </div>
+        </form>
+        <div>{{errormessage}}</div>
+    </div>    
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '985229098998840',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v11.0'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+</body>
+
+</html>
