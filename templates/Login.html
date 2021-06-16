@@ -47,38 +47,22 @@
             </div>
         </div>
 
-        <div class="tab">
-            <button class="tablinks" style="width:30.33%" onclick="openAccordion(event, 'id1')">Section 1</button>
-            <button class="tablinks" style="width:30.33%" onclick="openAccordion(event, 'id2')">Section 2</button>
-            <button class="tablinks" style="width:30.33%" onclick="openAccordion(event, 'id3')">Section 3</button>
-        </div>
-        
-        <div id="id1" class="tabcontent">
-            <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-            <h3>Section 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        
-        <div id="id2" class="tabcontent">
-            <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-            <h3>Section 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        
-        <div id="id3" class="tabcontent">
-            <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-            <h3>Section 3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
+       
         <div class="wrapper">
-        <h2>User Page</h2>
+        <h2>Login Page</h2>
+            <form method="POST" action="/LoginPage">
+            
+            
              <div class="form-group">
-                <tr><a href="https://localraj.auth.us-east-2.amazoncognito.com/logout?client_id=4a1e7lni0hfekh7abkp9cu7om8&logout_uri=http://localhost:5000/Logout" type="submit" class="linkname" class="button" id="facebookid" value="Facebook">Logout</a></tr>
+                <tr><a href="https://localraj.auth.us-east-2.amazoncognito.com/login?client_id=4a1e7lni0hfekh7abkp9cu7om8&response_type=code&scope=email+openid&redirect_uri=http://localhost:5000/FrontEnd" type="submit" class="linkname" class="button" id="facebookid" value="Facebook">Sign In/Sign Up</a></tr>
             </div>
-            <tr><a href="/register" type="submit" class="linkname" class="button" id="registerlinkid" value="Register">Register</a></tr>
+            
             
         </div>
     </form>
     </body>
 </html>
 
+<!--
+    4a1e7lni0hfekh7abkp9cu7om8
+-->

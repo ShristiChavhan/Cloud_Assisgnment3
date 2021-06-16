@@ -24,21 +24,31 @@ application.config['AWS_COGNITO_USER_POOL_CLIENT_SECRET'] = '16s7vtq9q91h7o6kb1k
 application.config['AWS_COGNITO_USER_POOL_CLIENT_SECRET'] = '16s7vtq9q91h7o6kb1k0lbkjo6ce4er37pk2okatgr1o7d61qqec'
 application.config['AWS_COGNITO_REDIRECT_URL'] = 'http://localhost:5000'
 
-aws_auth = AWSCognitoAuthentication(application)
+#aws_auth = AWSCognitoAuthentication(application)
 
 
 @application.route('/')
 def index():
+       return render_template('/Login.html')
+
+       
+
+@application.route('/FrontEnd')
+def frontlink():
        return render_template('/FrontEnd.html')
 
 @application.route("/register")
 def registerlink():
         return render_template("register.html")
 
+        
+@application.route("/Logout")
+def logoutlink():
+        return render_template("Logout.html")
 
 # run the app.
 if __name__ == "__main__":
     # Setting debug to True enables debug output. This line should be
     # removed before deploying a production app.
     application.debug = True
-    application.run()
+    application.run()   
