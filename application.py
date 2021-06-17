@@ -7,8 +7,8 @@ from flask_cognito_auth import CognitoAuthManager
 from flask_cognito_auth import login_handler
 from flask_cognito_auth import logout_handler
 from flask_cognito_auth import callback_handler
-
-
+import boto3
+import csv
 # some bits of text for the page.
 
 
@@ -45,6 +45,44 @@ def registerlink():
 @application.route("/Logout")
 def logoutlink():
         return render_template("Logout.html")
+
+def lambda_handler(event,context):
+    region='us-east-2'
+    recList=[]
+    try:
+        s3 = boto3.client('s3')
+        dyndb = boto3.client('dynamobd',region_name=region)
+        confile=s3.get_object(Bucket='mentalhealthdata',key='data.csv')
+        recList = confile['Body'].read().split('\n')
+        firstrecord=True
+        csv_reader = csv.reader(recList, delimiter=',', quotechar='"')
+        for row in csv_reader:
+            if (firstrecord):
+                firstrecord=False
+                continue
+                response = dyndb.put_item(
+                TableName='appdata',
+                Item={
+                'category' : {'S':str(category)},
+                'Company Name': {'S':str(CompanyName)},
+                'Street': {'S':str(Street)},
+                'Suburb' : {'S':str(Suburb)},
+                'State': {'S':State},
+                'Code': {'N': Code},
+                'Country': {'S':str(Country)},
+                'Phone': {'S':str(Phone)},
+                'Website': {'S':str(Website)},
+                'Mobile' : {'S':str(Mobile)},
+                'Fax': {'S':str(Fax)},
+                'Postal Address': {'S':str(PostalAddress)},
+                'Email' : {'S':str(Email)},
+                'Longitude': {'S':str(Longitude)},
+                'Latitude': {'S':str(Latitude)},
+                'Charge Per Session(in dollars)' : {'S':str(ChargePerSession(indollars))},
+                })
+        print('Put succeeded:')
+    except Exception as e:
+        print (str(e))
 
 # run the app.
 if __name__ == "__main__":
