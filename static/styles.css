@@ -19,7 +19,10 @@ zoom: 1;
   font-size: 15px;
   transition: 0.4s;
 }
-
+#spantext{
+font-size: 30px;
+color: red 
+}
 .active, .accordion:hover {
   background-color: #ccc;
 }
@@ -47,4 +50,3 @@ zoom: 1;
     color: #23276C;
     padding: 10px;
 }
-
