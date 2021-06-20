@@ -10,35 +10,38 @@
         <script src="https://rawgit.com/aws/amazon-cognito-identity-js/master/dist/aws-cognito-sdk.min.js"></script>
 <script src="https://rawgit.com/aws/amazon-cognito-identity-js/master/dist/amazon-cognito-identity.min.js"></script>
 
+ 
+
     </head>
+
+ 
 
 
     <body>
 
+ 
+
     <script>
-        function openAccordion(evt, sectionName) {
-        // Declare all variables
-        var i, tabcontent, tablinks;
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-            }
-
-         // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(sectionName).style.display = "block";
+function openAccordion(evt, Name) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(Name).style.display = "block";
   evt.currentTarget.className += " active";
 }
 </script>
 
+ 
 
-        <form method="POST" action="/LoginPage">
+ 
+
+        <!-- <form method="POST" action="/LoginPage"> -->
         <div class="sf_cols container-fluid c19-banner">
             <div class="sfContentBlock">
                 <div>
@@ -47,41 +50,76 @@
             </div>
         </div>
 
+ 
+
         <div class="tab">
-            <button class="tablinks" style="width:30.33%" onclick="openAccordion(event, 'id1')">Get Help</button>
-            <button class="tablinks" style="width:30.33%" onclick="openAccordion(event, 'id2')">Section 2</button>
-            <button class="tablinks" style="width:30.33%" onclick="openAccordion(event, 'id3')">Section 3</button>
+            <button class="tablinks" style="width:30.33%" onclick="openAccordion(event, 'GetHelp')">Get Help</button>
+            <button class="tablinks" style="width:30.33%" onclick="openAccordion(event, 'Section2')">Section 2</button>
+            <button class="tablinks" style="width:30.33%" onclick="openAccordion(event, 'Section3')">Section 3</button>
         </div>
         
 
+ 
+
         <form method="POST" action="/Query">
-        <div id="id1" class="tabcontent">
-            <span onclick="this.parentElement.style.display= none" class="topright">&times</span>
-            <h3>Get Help</h3>
+        <div id="GetHelp" class="tabcontent">
+            <br>
             Category:<input type="text" name="category">
             Suburb:<input type="text" name="suburb">
             State:<input type="text" name="state">
             <input type="submit" name ="query" value = Query>
-            <p>{{var}}</p>
+            <p></p>
+
+            {% if show_table %}
+    <table class="table mt-4">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">ID</th>
+          <th scope="col">Email</th>
+          <th scope="col">Suburb</th>
+          <th scope="col">State</th>
+          <th scope="col">Category</th>
+          <th scope="col">Phone</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      {% for index,data in data %}
+      <tr>
+        <td>{{index+1}}</td>
+        <td>{{data.id}}</td>
+        <td>{{data.Email}}</td>
+        <td>{{data.Suburb}}</td>
+        <td>{{data.State}}</td>
+        <td>{{data.category}}</td>
+        <td>{{data.Phone}}</td>
+        
+    
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
             
         </div>
     </form>
         
-        <div id="id2" class="tabcontent">
-            <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-            <h3>Section 2</h3>
+        <div id="Section2" class="tabcontent">
+
+ 
+
+             <br>
             <p></p>
         </div>
         
-        <div id="id3" class="tabcontent">
-            <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-            <h3>Section 3</h3>
-            <p></p>
+        <div id="Section3" class="tabcontent">
+            
+             <br>
+        
         </div>
         <div class="wrapper">
-        <h2>User Page</h2>
+        
              <div class="form-group">
-                <tr><a href="https://localraj.auth.us-east-2.amazoncognito.com/logout?client_id=4a1e7lni0hfekh7abkp9cu7om8&logout_uri=https://mentadoc.com" type="submit" class="linkname" class="button" id="facebookid" value="Facebook">Logout</a></tr>
+                <tr><a class="button" href="https://localraj.auth.us-east-2.amazoncognito.com/logout?client_id=4a1e7lni0hfekh7abkp9cu7om8&logout_uri=https://mentadoc.com" type="submit" class="linkname" class="button" id="facebookid" value="Facebook" style="">Logout</a></tr>
             </div>
             
         </div>
