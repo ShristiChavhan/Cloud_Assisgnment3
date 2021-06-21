@@ -69,11 +69,12 @@ def scandb():
               print(payload)
               r = requests.request("POST", URL, headers=header,data = payload)
               
-              data = jsonify(r.text)
-             
-              return data
-              #data = q['Items']
+              data = (r.text)
+              json_data = json.loads(data)
               show_table = True
+              return render_template("FrontEnd.html",data=enumerate(json_data['Items']),show_table = show_table)
+              #data = q['Items']
+              
               
               #if data:
                #      render_template('FrontEnd.html',data=enumerate(data),show_table = show_table)
