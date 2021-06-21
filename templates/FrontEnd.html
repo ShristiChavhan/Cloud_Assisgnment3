@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
         <script src="https://rawgit.com/aws/amazon-cognito-identity-js/master/dist/aws-cognito-sdk.min.js"></script>
         <script src="https://rawgit.com/aws/amazon-cognito-identity-js/master/dist/amazon-cognito-identity.min.js"></script>
+        <link rel="stylesheet" href="https://bootswatch.com/4/journal/bootstrap.min.css" />
+
         <script src="https://rawgit.com/aws/amazon-cognito-identity-js/master/dist/aws-cognito-sdk.min.js"></script>
 <script src="https://rawgit.com/aws/amazon-cognito-identity-js/master/dist/amazon-cognito-identity.min.js"></script>
 
@@ -35,7 +37,14 @@ function openAccordion(evt, Name) {
   document.getElementById(Name).style.display = "block";
   evt.currentTarget.className += " active";
 }
-</script>
+
+function myFunction() {
+ var x  = document.getElementById("panel");
+ if (x.style.display = "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  } </script>
 
  
 
@@ -45,7 +54,7 @@ function openAccordion(evt, Name) {
         <div class="sf_cols container-fluid c19-banner">
             <div class="sfContentBlock">
                 <div>
-                    <h1 class="covid-text"><a href="">MetaPhysical/Cognitive Beyond Emotions</a></h1>
+                    <h1 class="covid-text"><a href="">Cognitive Beyond Emotions</a></h1>
                 </div>
             </div>
         </div>
@@ -54,8 +63,8 @@ function openAccordion(evt, Name) {
 
         <div class="tab">
             <button class="tablinks" style="width:30.33%" onclick="openAccordion(event, 'GetHelp')">Get Help</button>
-            <button class="tablinks" style="width:30.33%" onclick="openAccordion(event, 'Section2')">Section 2</button>
-            <button class="tablinks" style="width:30.33%" onclick="openAccordion(event, 'Section3')">Section 3</button>
+            <!-- <button class="tablinks" style="width:30.33%" onclick="openAccordion(event, 'Section2')">Section 2</button>
+            <button class="tablinks" style="width:30.33%" onclick="openAccordion(event, 'Section3')">Section 3</button> -->
         </div>
         
 
@@ -67,40 +76,58 @@ function openAccordion(evt, Name) {
             Category:<input type="text" name="category">
             Suburb:<input type="text" name="suburb">
             State:<input type="text" name="state">
-            <input type="submit" name ="query" value = Query>
+            <input type="submit" name ="query" value = Query onclick="myFunction()" style="display: 'none'">
             <p></p>
-
-            {% if show_table %}
-    <table class="table mt-4">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">ID</th>
-          <th scope="col">Email</th>
-          <th scope="col">Suburb</th>
-          <th scope="col">State</th>
-          <th scope="col">Category</th>
-          <th scope="col">Phone</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      {% for index,data in data %}
-      <tr>
-        <td>{{index+1}}</td>
-        <td>{{data.id}}</td>
-        <td>{{data.Email}}</td>
-        <td>{{data.Suburb}}</td>
-        <td>{{data.State}}</td>
-        <td>{{data.category}}</td>
-        <td>{{data.Phone}}</td>
-        
-    
-      </tr>
-      {% endfor %}
-    </table>
-    {% endif %}
-            
         </div>
+
+
+<div id="panel" >
+    <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Suburb</th>
+        <th scope="col">Street</th>
+        <th scope="col">Country</th>
+        <th scope="col">Website</th>
+        <th scope="col">State</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Email</th>
+        <th scope="col">Charges</th>
+        <th scope="col">Fax</th>
+        <th scope="col">Code</th>
+        <th scope="col">category</th>
+        <!-- <th scope="col">Artist Image</th> -->
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    {% for index,row in data %}
+    <tr>
+      <td>{{index+1}}</td>
+      <td>{{row.Phone.S}}</td>
+      <td>{{row.Suburb.S}}</td>
+      <td>{{row.Street.S}}</td>
+      <td>{{row.Country.S}}</td>
+      <td>{{row.Website.S}}</td>
+      <td>{{row.State.S}}</td>
+      <td>{{row.Mobile.S}}</td>
+      <td>{{row.Email.S}}</td>
+      <td>{{row.Charges.S}}</td>
+      <td>{{row.Fax.S}}</td>
+      <td>{{row.Code.S}}</td>
+      <td>{{row.category.S}}</td>
+
+    </tr>
+
+    {% endfor %}
+    
+  </table>
+
+        </div>
+   
+
+
     </form>
         
         <div id="Section2" class="tabcontent">
